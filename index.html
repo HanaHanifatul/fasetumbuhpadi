@@ -208,7 +208,7 @@
           <h1
             class="text-[2.2rem] md:text-5xl lg:text-[3.8rem] font-extrabold text-white leading-relaxed mb-6 max-w-4xl drop-shadow-lg"
           >
-            Pemetaan Fase Tumbuh Padi Menggunakan
+            Pemetaan Fase Tumbuh Padi Menggunakan Data
             <span class="block my-2 text-agri-yellow"
               >Sentinel-1 dan Sentinel-2</span
             >
@@ -308,7 +308,7 @@
                 dunia (36,6 juta ton/tahun), sementara produksi padi nasional
                 terus menurun dari 59,20 juta ton (2018) menjadi 53,14 juta ton
                 (2024). Kabupaten Karawang, sebagai sentra padi kedua terbesar
-                Jawa Barat dengan produksi ±1,04 juta ton, menjadi wilayah
+                Jawa Barat dengan produksi ±1,04 juta ton menjadi wilayah
                 strategis untuk pemantauan.
               </p>
               <ul class="list-disc pl-5 space-y-2">
@@ -355,13 +355,12 @@
                 </li>
                 <li>
                   <strong>Keterbatasan data:</strong> Sentinel-1 rentan speckle
-                  noise; Sentinel-2 terhambat tutupan awan tropis. Evaluasi
+                  noise; Sentinel-2 rentan tutupan awan tropis. Evaluasi
                   kontribusi tiap sensor diperlukan.
                 </li>
                 <li>
-                  <strong>Ketiadaan peta piksel:</strong> Survei KSA tidak
-                  menghasilkan peta distribusi fase tumbuh padi hingga resolusi
-                  10m × 10m.
+                  <strong>Ketiadaan peta piksel:</strong> Survei KSA belum
+                  menghasilkan peta sebaran fase tumbuh padi hingga tingkat piksel.
                 </li>
               </ul>
             </div>
@@ -394,15 +393,14 @@
               <ol class="list-decimal pl-5 space-y-2">
                 <li>
                   Membangun dan mengevaluasi arsitektur Bidirectional Long
-                  Short-Term Memory untuk klasifikasi fase tumbuh padi
-                  menggunakan kombinasi fitur band dan indeks dari Sentinel-1
-                  dan Sentinel-2, serta membandingkan kinerjanya dengan
-                  arsitektur Long Short-Term Memory pada penelitian Thorp dan
+                  Short-Term Memory (Bi-LSTM) untuk klasifikasi fase tumbuh padi
+                  menggunakan data fusi Sentinel-1 dan Sentinel-2, serta membandingkan kinerjanya dengan
+                  arsitektur Long Short-Term Memory (LSTM) pada penelitian Thorp dan
                   Drajat (2021).
                 </li>
                 <li>
                   Menganalisis kontribusi relatif fitur Sentinel-1 dan
-                  Sentinel-2 terhadap klasifikasi fase tumbuh padi melalui
+                  Sentinel-2 terhadap akurasi klasifikasi fase tumbuh padi melalui
                   eksperimen sembilan skenario fitur menggunakan model Bi-LSTM.
                 </li>
                 <li>
@@ -751,31 +749,37 @@
                       <span
                         class="px-3 py-1.5 bg-white border border-gray-200 text-gray-700 text-sm rounded-lg shadow-sm hover:border-green-400 hover:text-green-700 transition-colors cursor-default"
                       >
-                        <strong class="text-green-600 mr-1">4.</strong> Imputasi
-                        Missing Value
+                        <strong class="text-green-600 mr-1">4.</strong> 
+                        Imputasi Missing Value
                       </span>
                       <span
                         class="px-3 py-1.5 bg-white border border-gray-200 text-gray-700 text-sm rounded-lg shadow-sm hover:border-green-400 hover:text-green-700 transition-colors cursor-default"
                       >
                         <strong class="text-green-600 mr-1">5.</strong>
-                        Smoothing Savitzky-Golay
-                      </span>
-                      <span
-                        class="px-3 py-1.5 bg-white border border-gray-200 text-gray-700 text-sm rounded-lg shadow-sm hover:border-green-400 hover:text-green-700 transition-colors cursor-default"
-                      >
-                        <strong class="text-green-600 mr-1">6.</strong> Analisis
-                        Data Eksplorasi (EDA)
-                      </span>
-                      <span
-                        class="px-3 py-1.5 bg-white border border-gray-200 text-gray-700 text-sm rounded-lg shadow-sm hover:border-green-400 hover:text-green-700 transition-colors cursor-default"
-                      >
-                        <strong class="text-green-600 mr-1">7.</strong>
                         Splitting Data
                       </span>
                       <span
                         class="px-3 py-1.5 bg-white border border-gray-200 text-gray-700 text-sm rounded-lg shadow-sm hover:border-green-400 hover:text-green-700 transition-colors cursor-default"
                       >
+                        <strong class="text-green-600 mr-1">6.</strong> 
+                        Winsorizing
+                      </span>
+                      <span
+                        class="px-3 py-1.5 bg-white border border-gray-200 text-gray-700 text-sm rounded-lg shadow-sm hover:border-green-400 hover:text-green-700 transition-colors cursor-default"
+                      >
+                        <strong class="text-green-600 mr-1">7.</strong>
+                        Smoothing Savitzky-Golay
+                      </span>
+                      <span
+                        class="px-3 py-1.5 bg-white border border-gray-200 text-gray-700 text-sm rounded-lg shadow-sm hover:border-green-400 hover:text-green-700 transition-colors cursor-default"
+                      >
                         <strong class="text-green-600 mr-1">8.</strong>
+                        Analisis Data Eksploratory
+                      </span>
+                      <span
+                        class="px-3 py-1.5 bg-white border border-gray-200 text-gray-700 text-sm rounded-lg shadow-sm hover:border-green-400 hover:text-green-700 transition-colors cursor-default"
+                      >
+                        <strong class="text-green-600 mr-1">9.</strong>
                         Transformasi Data
                       </span>
                     </div>
@@ -808,7 +812,7 @@
                 >
                   Pada tahap ini dibangun dua arsitektur model, yaitu arsitektur
                   <strong>LSTM Thorp dan Drajat (2021)</strong> serta
-                  <strong>arsitektur 2-Layer Stacked Bi-LSTM</strong>
+                  <strong>arsitektur Bi-LSTM</strong>
                   yang dikembangkan oleh peneliti. Arsitektur LSTM milik Thorp
                   dan Drajat (2021) digunakan sebagai model baseline karena
                   sebelumnya telah teruji dalam pemetaan fase tumbuh padi
@@ -1174,8 +1178,8 @@
                 </h3>
                 <p class="text-gray-600 leading-relaxed text-sm md:text-base">
                   Pengukuran performa akurasi model klasifikasi menggunakan
-                  metrik <em>Precision</em>, <em>Recall</em>, dan
-                  <em>F1-Score</em>.
+                  metrik <em>Precision</em>, <em>Recall</em>
+                  , <em>F1-Score</em>, dan Koefisien <em>Kappa</em>.
                 </p>
               </div>
             </div>
@@ -1253,12 +1257,12 @@
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
                     >
-                      84,77
+                      82,03
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
                     >
-                      86,11
+                      84,68
                     </td>
                   </tr>
                   <tr class="hover:bg-gray-50 transition-colors">
@@ -1270,17 +1274,17 @@
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
                     >
-                      80,77
+                      79,27
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
                     >
-                      82,12
+                      83,80
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
                     >
-                      81,44
+                      81,52
                     </td>
                   </tr>
                   <tr class="hover:bg-gray-50 transition-colors">
@@ -1292,17 +1296,17 @@
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
                     >
-                      87,76
+                      90,55
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
                     >
-                      89,58
+                      86,46
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
                     >
-                      88,66
+                      88,45
                     </td>
                   </tr>
                   <tr class="hover:bg-gray-50 transition-colors">
@@ -1314,17 +1318,17 @@
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
                     >
-                      82,40
+                      85,59
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
                     >
-                      82,76
+                      87,07
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
                     >
-                      82,58
+                      86,32
                     </td>
                   </tr>
                   <tr class="hover:bg-gray-50 transition-colors">
@@ -1336,17 +1340,17 @@
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
                     >
-                      85,24
+                      82,91
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
                     >
-                      84,31
+                      83,21
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
                     >
-                      84,77
+                      83,06
                     </td>
                   </tr>
                   <tr class="hover:bg-gray-50 transition-colors">
@@ -1358,17 +1362,17 @@
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
                     >
-                      76,58
+                      74,85
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
                     >
-                      77,07
+                      81,53
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
                     >
-                      76,83
+                      78,05
                     </td>
                   </tr>
                   <tr
@@ -1388,7 +1392,7 @@
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-agri-dark"
                     >
-                      84,13
+                      84,20
                     </td>
                   </tr>
                   <tr
@@ -1402,17 +1406,17 @@
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-agri-dark"
                     >
-                      83,37
+                      83,46
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-agri-dark"
                     >
-                      83,43
+                      84,02
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-agri-dark"
                     >
-                      83,40
+                      83,68
                     </td>
                   </tr>
                 </tbody>
@@ -1464,6 +1468,12 @@
                       >
                         <em>F1-Score</em>
                       </th>
+                      <th
+                        scope="col"
+                        class="px-4 py-4 text-center text-xs font-bold text-agri-dark uppercase tracking-wider"
+                      >
+                        Koefisien <em>Kappa</em>
+                      </th>
                     </tr>
                   </thead>
                   <tbody class="bg-white divide-y divide-gray-100">
@@ -1478,22 +1488,27 @@
                       <td
                         class="px-4 py-4 whitespace-nowrap text-sm text-agri-dark text-center"
                       >
-                        84,13%
+                        84,20%
                       </td>
                       <td
                         class="px-4 py-4 whitespace-nowrap text-sm text-agri-dark text-center"
                       >
-                        83,37%
+                        83,46%
                       </td>
                       <td
                         class="px-4 py-4 whitespace-nowrap text-sm text-agri-dark text-center"
                       >
-                        83,43%
+                        83,02%
                       </td>
                       <td
                         class="px-4 py-4 whitespace-nowrap text-sm text-agri-dark text-center"
                       >
-                        83,40%
+                        83,68%
+                      </td>
+                      <td
+                        class="px-4 py-4 whitespace-nowrap text-sm text-agri-dark text-center"
+                      >
+                        0,8090
                       </td>
                     </tr>
                     <tr class="hover:bg-gray-50 transition-colors">
@@ -1505,22 +1520,27 @@
                       <td
                         class="px-4 py-4 whitespace-nowrap text-sm text-gray-600 text-center"
                       >
-                        79,44%
+                        80,66%
                       </td>
                       <td
                         class="px-4 py-4 whitespace-nowrap text-sm text-gray-600 text-center"
                       >
-                        79,02%
+                        80,16%
                       </td>
                       <td
                         class="px-4 py-4 whitespace-nowrap text-sm text-gray-600 text-center"
                       >
-                        79,03%
+                        80,28%
                       </td>
                       <td
                         class="px-4 py-4 whitespace-nowrap text-sm text-gray-600 text-center"
                       >
-                        78,91%
+                        80,16%
+                      </td>
+                      <td
+                        class="px-4 py-4 whitespace-nowrap text-sm text-gray-600 text-center"
+                      >
+                        0,7661
                       </td>
                     </tr>
                     <tr class="hover:bg-gray-50 transition-colors">
@@ -1532,22 +1552,27 @@
                       <td
                         class="px-4 py-4 whitespace-nowrap text-sm text-gray-600 text-center"
                       >
-                        77,47%
+                        77,27%
                       </td>
                       <td
                         class="px-4 py-4 whitespace-nowrap text-sm text-gray-600 text-center"
                       >
-                        77,35%
+                        77,16%
                       </td>
                       <td
                         class="px-4 py-4 whitespace-nowrap text-sm text-gray-600 text-center"
                       >
-                        76,82%
+                        76,74%
                       </td>
                       <td
                         class="px-4 py-4 whitespace-nowrap text-sm text-gray-600 text-center"
                       >
-                        76,79%
+                        76,62%
+                      </td>
+                      <td
+                        class="px-4 py-4 whitespace-nowrap text-sm text-gray-600 text-center"
+                      >
+                        0,7249
                       </td>
                     </tr>
                   </tbody>
@@ -1555,6 +1580,7 @@
               </div>
             </div>
 
+            <!-- Tabel 3. Evaluasi Skenario Fitur -->
             <div
               class="overflow-hidden shadow-lg border border-gray-200 rounded-2xl h-fit"
             >
@@ -1567,340 +1593,123 @@
                 <table class="min-w-full divide-y divide-gray-200">
                   <thead class="bg-agri-light">
                     <tr>
-                      <th
-                        scope="col"
-                        class="px-4 py-4 text-left text-xs font-bold text-agri-dark uppercase tracking-wider"
-                      >
+                      <th scope="col" class="px-4 py-4 text-left text-xs font-bold text-agri-dark uppercase tracking-wider">
                         Skenario
                       </th>
-                      <th
-                        scope="col"
-                        class="px-4 py-4 text-center text-xs font-bold text-agri-dark uppercase tracking-wider"
-                      >
+                      <th scope="col" class="px-4 py-4 text-center text-xs font-bold text-agri-dark uppercase tracking-wider">
                         Jumlah Fitur
                       </th>
-                      <th
-                        scope="col"
-                        class="px-4 py-4 text-center text-xs font-bold text-agri-dark uppercase tracking-wider"
-                      >
+                      <th scope="col" class="px-4 py-4 text-center text-xs font-bold text-agri-dark uppercase tracking-wider">
                         <em>Accuracy</em>
                       </th>
-                      <th
-                        scope="col"
-                        class="px-4 py-4 text-center text-xs font-bold text-agri-dark uppercase tracking-wider"
-                      >
+                      <th scope="col" class="px-4 py-4 text-center text-xs font-bold text-agri-dark uppercase tracking-wider">
                         <em>Precision</em>
                       </th>
-                      <th
-                        scope="col"
-                        class="px-4 py-4 text-center text-xs font-bold text-agri-dark uppercase tracking-wider"
-                      >
+                      <th scope="col" class="px-4 py-4 text-center text-xs font-bold text-agri-dark uppercase tracking-wider">
                         <em>Recall</em>
                       </th>
-                      <th
-                        scope="col"
-                        class="px-4 py-4 text-center text-xs font-bold text-agri-dark uppercase tracking-wider"
-                      >
-                        <em>F1-Score</em>
+                      <th scope="col" class="px-4 py-4 text-center text-xs font-bold text-agri-dark uppercase tracking-wider">
+                        F1-<em>score</em>
+                      </th>
+                      <th scope="col" class="px-4 py-4 text-center text-xs font-bold text-agri-dark uppercase tracking-wider">
+                        Koefisien <em>Kappa</em>
                       </th>
                     </tr>
                   </thead>
                   <tbody class="bg-white divide-y divide-gray-100">
+                    <!-- S1 Band -->
                     <tr class="hover:bg-gray-50 transition-colors">
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-900"
-                      >
-                        <em>S1 Band</em>
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        2
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        68,61
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        67,60
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        67,34
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        67,33
-                      </td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900"><em>S1 Band</em></td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">2</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">69,05</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">68,49</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">68,14</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">68,09</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">0,6264</td>
                     </tr>
+                    <!-- S1 Indeks -->
                     <tr class="hover:bg-gray-50 transition-colors">
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-900"
-                      >
-                        <em>S1 Indeks</em>
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        3
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        68,69
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        68,08
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        68,12
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        67,88
-                      </td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900"><em>S1 Indeks</em></td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">3</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">67,75</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">67,03</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">66,71</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">66,70</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">0,6102</td>
                     </tr>
+                    <!-- S1 Band Indeks -->
                     <tr class="hover:bg-gray-50 transition-colors">
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-900"
-                      >
-                        <em>S1 Band Indeks</em>
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        5
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        69,34
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        68,50
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        68,26
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        68,22
-                      </td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900"><em>S1 Band Indeks</em></td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">5</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">70,92</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">69,99</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">69,73</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">69,78</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">0,6482</td>
                     </tr>
-                    <tr
-                      class="bg-green-50 font-semibold border-y border-green-200 hover:bg-green-100 transition-colors"
-                    >
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark font-bold"
-                      >
-                        <em>S2 Band</em>
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold"
-                      >
-                        5
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold"
-                      >
-                        84,13
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold"
-                      >
-                        83,57
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold"
-                      >
-                        83,85
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold"
-                      >
-                        83,65
-                      </td>
-                    </tr>
+                    <!-- S2 Band -->
                     <tr class="hover:bg-gray-50 transition-colors">
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-900"
-                      >
-                        <em>S2 Indeks</em>
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        2
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        82,97
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        82,53
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        82,29
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        82,33
-                      </td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900"><em>S2 Band</em></td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">5</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">84,20</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">83,79</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">83,31</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">83,50</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">0,8085</td>
                     </tr>
+                    <!-- S2 Indeks -->
                     <tr class="hover:bg-gray-50 transition-colors">
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-900"
-                      >
-                        <em>S2 Band Indeks</em>
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        7
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        83,69
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        83,32
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        82,73
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        82,97
-                      </td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900"><em>S2 Indeks</em></td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">2</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">83,84</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">83,33</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">83,29</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">83,23</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">0,8044</td>
                     </tr>
+                    <!-- S2 Band Indeks (Skenario Terbaik - Highlighted) -->
+                    <tr class="bg-green-50 font-semibold border-y border-green-200 hover:bg-green-100 transition-colors">
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark font-bold"><em>S2 Band Indeks</em></td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold">7</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold">84,78</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold">84,11</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold">84,32</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold">84,19</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold">0,8158</td>
+                    </tr>
+                    <!-- S1 S2 Band -->
                     <tr class="hover:bg-gray-50 transition-colors">
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-900"
-                      >
-                        <em>S1 S2 Band</em>
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        7
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        84,05
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        83,41
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        83,27
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        83,32
-                      </td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900"><em>S1 S2 Band</em></td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">7</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">83,62</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">82,80</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">83,27</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">82,98</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">0,8021</td>
                     </tr>
-                    <tr
-                      class="bg-green-50 font-semibold border-y border-green-200 hover:bg-green-100 transition-colors"
-                    >
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark font-bold"
-                      >
-                        <em>S1 S2 Indeks</em>
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold"
-                      >
-                        5
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold"
-                      >
-                        84,34
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold"
-                      >
-                        83,96
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold"
-                      >
-                        83,53
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold"
-                      >
-                        83,65
-                      </td>
-                    </tr>
+                    <!-- S1 S2 Indeks -->
                     <tr class="hover:bg-gray-50 transition-colors">
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-900"
-                      >
-                        <em>S1 S2 Band Indeks</em>
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        12
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        84,13
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        83,37
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        83,43
-                      </td>
-                      <td
-                        class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center"
-                      >
-                        83,40
-                      </td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900"><em>S1 S2 Indeks</em></td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">5</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">82,68</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">82,30</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">81,56</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">81,78</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">0,7901</td>
+                    </tr>
+                    <!-- S1 S2 Band Indeks -->
+                    <tr class="hover:bg-gray-50 transition-colors">
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900"><em>S1 S2 Band Indeks</em></td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">12</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">84,20</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">83,46</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">84,02</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">83,68</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">0,8090</td>
                     </tr>
                   </tbody>
                 </table>
-              </div>
+              </div> 
             </div>
           </div>
         </div>
@@ -2014,26 +1823,27 @@
                 <p>
                   Arsitektur Bi-LSTM mencapai akurasi
                   <span class="font-bold text-white bg-agri/50 px-2 rounded"
-                    >84.13%</span
+                    >84.20%</span
                   >, melampaui LSTM Thorp & Drajat (2021) dengan hyperparameter
-                  teroptimasi (79.44%) maupun asli (77.47%). Peningkatan
-                  disebabkan kemampuan pemrosesan temporal dua arah. Fase
-                  generatif memperoleh F1-score terbaik (88.66%), sementara fase
-                  bera paling sulit diklasifikasikan (76.83%) akibat tumpang
-                  tindih karakteristik spektral dengan fase panen dan persiapan
+                  teroptimasi (80,66%) maupun hyperparameter asli (77,27%). Peningkatan
+                  disebabkan oleh kemampuan pemrosesan temporal dua arah. Fase
+                  generatif memperoleh F1-score terbaik (88.45%), sementara fase
+                  bera paling sulit diklasifikasikan (78,05%) akibat tumpang
+                  tindih karakteristik spektral antara fase panen dan persiapan
                   lahan.
                 </p>
               </li>
               <li class="flex items-start">
                 <span class="mr-4 mt-1.5 text-agri-yellow text-xl">✦</span>
                 <p>
-                  Skenario S1 S2 Indeks (EVI, LSWI, NDPI, RPI, API) menghasilkan
-                  akurasi terbaik
+                  Skenario S2 menghasilkan performa yang lebih tinggi dibandingkan
+                  fitur S1 dan fusi S1 S2. Skenario terbaik diperoleh pada kombinasi S2 Band Indeks 
+                  (B2, B3, B4, B8, B11, EVI, LSWI) dengan akurasi 
                   <span class="font-bold text-white bg-agri/50 px-2 rounded"
-                    >84.34%</span
+                    >84.78%</span
                   >
-                  dengan hanya 5 fitur, membuktikan bahwa penambahan fitur tidak
-                  selalu meningkatkan performa akibat redundansi informasi.
+                  <em>Feature importance </em> ditunjukkan oleh indeks EVI, B11, dan B4 yang menegaskan pentingnya 
+                  informasi kerapatan vegetasi dan kandungan air permukaan dalam membedakan fase tumbuh padi. 
                 </p>
               </li>
               <li class="flex items-start">
@@ -2042,7 +1852,7 @@
                   Peta fase tumbuh padi Kab. Karawang Juli–Desember 2025
                   berhasil dipetakan. Validasi lapangan menunjukkan model baik
                   mendeteksi generatif akhir, namun masih kesulitan membedakan
-                  vegetatif akhir vs. generatif awal, dan generatif vs. panen
+                  vegetatif akhir vs generatif awal, dan generatif vs panen
                   ketika perubahan kondisi berlangsung cepat.
                 </p>
               </li>
