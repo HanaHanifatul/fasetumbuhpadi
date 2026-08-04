@@ -9,7 +9,7 @@ var map = new ol.Map({
 });
 
 //initial view - epsg:3857 coordinates if not "Match project CRS"
-map.getView().fit([11915995.208226, -737131.437929, 11987341.003004, -660590.769769], map.getSize());
+map.getView().fit([11958853.201917, -688317.504014, 11962654.673423, -685112.401690], map.getSize());
 
 //full zooms only
 map.getView().setProperties({constrainResolution: true});
@@ -513,7 +513,7 @@ var bottomRightContainerDiv = document.getElementById('bottom-right-container')
 //layer search
 
 var searchLayer = new SearchLayer({
-    layer: lyr_BatasWilayahKabupatenKarawangperKecamatan_7,
+    layer: lyr_BatasWilayahKabupatenKarawangperKecamatan_1,
     colName: 'Kecamatan',
     zoom: 10,
     collapsed: true,

@@ -9,7 +9,7 @@ var style_GroundTruthDesember_8 = function(feature, resolution){
     
     var labelText = ""; 
     var value = feature.get("");
-    var labelFont = "15.600000000000001px \'Open Sans ExtraBold\', sans-serif";
+    var labelFont = "13.0px \'Open Sans ExtraBold\', sans-serif";
     var labelFill = "#323232";
     var bufferColor = "";
     var bufferWidth = 0;
