@@ -1,0 +1,1004 @@
+<!-- Pendahuluan -->
+<section id="pendahuluan" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2
+        class="text-3xl font-extrabold text-agri-dark sm:text-4xl uppercase tracking-wider"
+      >
+        Pendahuluan
+      </h2>
+      <div class="mt-4 w-24 h-1.5 bg-agri-yellow mx-auto rounded-full"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <!-- Card 1 -->
+      <div
+        class="bg-agri-light p-10 rounded-3xl shadow-sm border-2 border-green-50 hover:shadow-xl hover:border-green-200 transition-all duration-300 transform hover:-translate-y-2 group"
+      >
+        <div
+          class="w-16 h-16 bg-agri rounded-2xl flex items-center justify-center mb-8 text-white shadow-md group-hover:scale-110 transition-transform"
+        >
+          <svg
+            class="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h7"
+            ></path>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Latar Belakang</h3>
+        <div class="text-gray-600 leading-relaxed">
+          <p class="mb-4">
+            Indonesia menempati posisi keempat konsumsi beras tertinggi dunia
+            (36,6 juta ton/tahun), sementara produksi padi nasional terus
+            menurun dari 59,20 juta ton (2018) menjadi 53,14 juta ton (2024).
+            Kabupaten Karawang, sebagai sentra padi kedua terbesar Jawa Barat
+            dengan produksi ±1,04 juta ton menjadi wilayah strategis untuk
+            pemantauan.
+          </p>
+          <ul class="list-disc pl-5 space-y-2">
+            <li>Metode KSA konvensional mahal &amp; tidak real-time.</li>
+            <li>
+              Sensor tunggal tidak mampu merepresentasikan semua kondisi lahan.
+            </li>
+            <li>Model nontemporal rentan misklasifikasi fase serupa.</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div
+        class="bg-agri-light p-10 rounded-3xl shadow-sm border-2 border-green-50 hover:shadow-xl hover:border-green-200 transition-all duration-300 transform hover:-translate-y-2 group"
+      >
+        <div
+          class="w-16 h-16 bg-agri rounded-2xl flex items-center justify-center mb-8 text-white shadow-md group-hover:scale-110 transition-transform"
+        >
+          <svg
+            class="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Rumusan Masalah</h3>
+        <div class="text-gray-600 leading-relaxed">
+          <ul class="list-disc pl-5 space-y-2">
+            <li>
+              <strong>Kesenjangan arsitektur:</strong> Model LSTM satu arah
+              (Thorp &amp; Drajat, 2021) tidak memanfaatkan konteks temporal
+              dari dua arah, menyebabkan misklasifikasi pada fase transisi
+              seperti vegetatif akhir ke generatif.
+            </li>
+            <li>
+              <strong>Keterbatasan data:</strong> Sentinel-1 rentan speckle
+              noise; Sentinel-2 rentan tutupan awan tropis. Evaluasi kontribusi
+              tiap sensor diperlukan.
+            </li>
+            <li>
+              <strong>Ketiadaan peta piksel:</strong> Survei KSA belum
+              menghasilkan peta sebaran fase tumbuh padi hingga tingkat piksel.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div
+        class="bg-agri-light p-10 rounded-3xl shadow-sm border-2 border-green-50 hover:shadow-xl hover:border-green-200 transition-all duration-300 transform hover:-translate-y-2 group"
+      >
+        <div
+          class="w-16 h-16 bg-agri rounded-2xl flex items-center justify-center mb-8 text-white shadow-md group-hover:scale-110 transition-transform"
+        >
+          <svg
+            class="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Tujuan Penelitian</h3>
+        <div class="text-gray-600 leading-relaxed">
+          <ol class="list-decimal pl-5 space-y-2">
+            <li>
+              Membangun dan mengevaluasi arsitektur Bidirectional Long
+              Short-Term Memory (Bi-LSTM) untuk klasifikasi fase tumbuh padi
+              menggunakan data fusi Sentinel-1 dan Sentinel-2, serta
+              membandingkan kinerjanya dengan arsitektur Long Short-Term Memory
+              (LSTM) pada penelitian Thorp dan Drajat (2021).
+            </li>
+            <li>
+              Menganalisis kontribusi relatif fitur Sentinel-1 dan Sentinel-2
+              terhadap akurasi klasifikasi fase tumbuh padi melalui eksperimen
+              sembilan skenario fitur menggunakan model Bi-LSTM.
+            </li>
+            <li>
+              Menghasilkan peta spasial fase tumbuh padi di Kabupaten Karawang
+              pada periode Juli–Desember 2025 menggunakan model terbaik.
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pendahuluan -->
+<section id="pendahuluan" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2
+        class="text-3xl font-extrabold text-agri-dark sm:text-4xl uppercase tracking-wider"
+      >
+        Pendahuluan
+      </h2>
+      <div class="mt-4 w-24 h-1.5 bg-agri-yellow mx-auto rounded-full"></div>
+    </div>
+
+    <!-- Mengapa Padi? -->
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 items-center mb-20">
+      <!-- Text -->
+      <div class="lg:col-span-3">
+        <div class="flex items-center gap-4 mb-5">
+          <div
+            class="w-12 h-12 bg-agri rounded-xl flex items-center justify-center text-white shadow-md"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 3v18m0-18C8 3 5 6 5 10c0 4 3 7 7 7m0-14c4 0 7 3 7 7 0 4-3 7-7 7"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-agri-dark">
+            Mengapa Fase Tumbuh Padi Penting?
+          </h3>
+        </div>
+
+        <p class="text-gray-600 leading-relaxed text-lg">
+          Padi merupakan salah satu komoditas pangan utama ketiga di dunia.
+          Setiap fase pertumbuhannya memiliki karakteristik dan kebutuhan yang
+          berbeda sehingga informasi mengenai fase tumbuh dapat membantu
+          memahami kondisi pertanaman serta mendukung pemantauan area panen dan
+          produksi padi.
+        </p>
+      </div>
+    </div>
+
+    <!-- Mengapa Karawang -->
+    <div
+      class="bg-agri-dark rounded-[2rem] p-8 md:p-12 text-white mb-20 overflow-hidden relative"
+    >
+      <div
+        class="absolute -right-20 -top-20 w-64 h-64 bg-agri rounded-full opacity-30"
+      ></div>
+      <div
+        class="absolute -left-20 -bottom-24 w-72 h-72 bg-agri-yellow rounded-full opacity-10"
+      ></div>
+
+      <div
+        class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-8 items-center"
+      >
+        <div class="md:col-span-1">
+          <p
+            class="text-agri-yellow font-bold uppercase tracking-wider text-sm mb-3"
+          >
+            Mengapa Karawang?
+          </p>
+          <h3 class="text-3xl font-extrabold leading-tight">
+            Wilayah strategis untuk pemantauan fase padi
+          </h3>
+        </div>
+
+        <div class="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+            <p class="text-4xl font-extrabold text-agri-yellow">
+              1,041 juta ton
+            </p>
+            <p class="mt-2 text-gray-200">
+              Produsen padi terbesar kedua di Jawa Barat
+            </p>
+          </div>
+
+          <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+            <p class="text-4xl font-extrabold text-agri-yellow">57%</p>
+            <p class="mt-2 text-gray-200">
+              wilayah Kabupaten Karawang merupakan lahan sawah.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tantangan -->
+    <div class="mb-20">
+      <div class="text-center mb-10">
+        <h3 class="mt-2 text-3xl font-extrabold text-agri-dark">
+          Masalah dan Keterbatasan
+        </h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Challenge 1 -->
+        <div
+          class="p-7 rounded-3xl border border-gray-100 bg-gray-50 hover:bg-agri-light hover:border-green-100 transition-all duration-300"
+        >
+          <div
+            class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-agri shadow-sm mb-5"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8v4l3 2m6-2a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+          </div>
+
+          <h4 class="text-xl font-bold text-gray-900 mb-3">Keterbatasan KSA</h4>
+
+          <p class="text-gray-600 leading-relaxed">
+            KSA menyediakan informasi fase tumbuh berdasarkan survei lapangan,
+            tetapi belum menghasilkan gambaran sebaran fase tumbuh secara
+            kontinu hingga tingkat piksel.
+          </p>
+        </div>
+
+        <!-- Challenge 2 -->
+        <div
+          class="p-7 rounded-3xl border border-gray-100 bg-gray-50 hover:bg-agri-light hover:border-green-100 transition-all duration-300"
+        >
+          <div
+            class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-agri shadow-sm mb-5"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 15a4 4 0 004 4h9a5 5 0 100-10h-1.26A8 8 0 103 15z"
+              ></path>
+            </svg>
+          </div>
+
+          <h4 class="text-xl font-bold text-gray-900 mb-3">
+            Keterbatasan Sensor
+          </h4>
+
+          <p class="text-gray-600 leading-relaxed">
+            Sentinel-1 dapat dipengaruhi speckle noise, sedangkan Sentinel-2
+            menghadapi tutupan awan. Penggunaan kedua sumber data dapat
+            memberikan informasi yang lebih beragam.
+          </p>
+        </div>
+
+        <!-- Challenge 3 -->
+        <div
+          class="p-7 rounded-3xl border border-gray-100 bg-gray-50 hover:bg-agri-light hover:border-green-100 transition-all duration-300"
+        >
+          <div
+            class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-agri shadow-sm mb-5"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              ></path>
+            </svg>
+          </div>
+
+          <h4 class="text-xl font-bold text-gray-900 mb-3">
+            Pola Pertumbuhan Bersifat Temporal
+          </h4>
+
+          <p class="text-gray-600 leading-relaxed">
+            Karakteristik fase tumbuh dapat memiliki kemiripan pada satu waktu.
+            Karena itu, informasi perubahan kondisi pertanaman dari waktu ke
+            waktu penting dalam proses klasifikasi.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tujuan Penelitian -->
+    <div class="mt-20">
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <h3 class="mt-2 text-3xl font-extrabold text-agri-dark">
+          Tujuan Penelitian
+        </h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Tujuan 1 -->
+        <div
+          class="relative bg-white rounded-3xl p-8 border-2 border-green-50 shadow-sm hover:shadow-xl hover:border-green-200 transition-all duration-300 group"
+        >
+          <div class="flex items-start justify-between mb-6">
+            <div
+              class="w-14 h-14 bg-agri rounded-2xl flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform"
+            >
+              <svg
+                class="w-7 h-7"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V9l-6-6H9z"
+                ></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 14l2 2 4-4"
+                ></path>
+              </svg>
+            </div>
+
+            <span class="text-4xl font-extrabold text-green-100"> 01 </span>
+          </div>
+
+          <h4 class="text-xl font-bold text-gray-900 mb-3">
+            Mengembangkan Model Bi-LSTM
+          </h4>
+
+          <p class="text-gray-600 leading-relaxed">
+            Membangun dan mengevaluasi model
+            <em>Bidirectional Long Short-Term Memory</em> (Bi-LSTM) menggunakan
+            fusi data Sentinel-1 dan Sentinel-2 untuk mengklasifikasikan fase
+            tumbuh padi, serta membandingkan kinerjanya dengan model LSTM
+            penelitian Thorp dan Drajat (2021).
+          </p>
+        </div>
+
+        <!-- Tujuan 2 -->
+        <div
+          class="relative bg-white rounded-3xl p-8 border-2 border-green-50 shadow-sm hover:shadow-xl hover:border-green-200 transition-all duration-300 group"
+        >
+          <div class="flex items-start justify-between mb-6">
+            <div
+              class="w-14 h-14 bg-agri rounded-2xl flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform"
+            >
+              <svg
+                class="w-7 h-7"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 19V5m0 14h16M8 16l3-4 3 2 4-6"
+                ></path>
+              </svg>
+            </div>
+
+            <span class="text-4xl font-extrabold text-green-100"> 02 </span>
+          </div>
+
+          <h4 class="text-xl font-bold text-gray-900 mb-3">
+            Menganalisis Kontribusi Fitur
+          </h4>
+
+          <p class="text-gray-600 leading-relaxed">
+            Menganalisis kontribusi relatif fitur Sentinel-1 dan Sentinel-2
+            terhadap klasifikasi fase tumbuh padi melalui sembilan skenario
+            kombinasi fitur menggunakan model Bi-LSTM.
+          </p>
+        </div>
+
+        <!-- Tujuan 3 -->
+        <div
+          class="relative bg-white rounded-3xl p-8 border-2 border-green-50 shadow-sm hover:shadow-xl hover:border-green-200 transition-all duration-300 group"
+        >
+          <div class="flex items-start justify-between mb-6">
+            <div
+              class="w-14 h-14 bg-agri rounded-2xl flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform"
+            >
+              <svg
+                class="w-7 h-7"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 20l-5.447-2.724A2 2 0 012 15.488V8.512a2 2 0 011.106-1.788L9 4m0 16l6-3m-6 3V4m6 13l5.894-2.947A2 2 0 0022 12.265V5.735a2 2 0 00-1.106-1.788L15 1m0 16V1"
+                ></path>
+              </svg>
+            </div>
+
+            <span class="text-4xl font-extrabold text-green-100"> 03 </span>
+          </div>
+
+          <h4 class="text-xl font-bold text-gray-900 mb-3">
+            Menghasilkan Peta Fase Tumbuh
+          </h4>
+
+          <p class="text-gray-600 leading-relaxed">
+            Menghasilkan peta spasial fase tumbuh padi di Kabupaten Karawang
+            untuk periode Juli–Desember 2025 menggunakan model dengan kinerja
+            terbaik.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Hasil -->
+    <section id="hasil" class="py-24 bg-white border-t border-gray-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2
+            class="text-3xl font-extrabold text-agri-dark sm:text-4xl uppercase tracking-wider"
+          >
+            Hasil dan Pembahasan
+          </h2>
+          <div
+            class="mt-4 w-24 h-1.5 bg-agri-yellow mx-auto rounded-full"
+          ></div>
+        </div>
+
+        <div class="space-y-16">
+          <!-- Tabel 1: Evaluasi Model Bi-LSTM -->
+          <div
+            class="overflow-hidden shadow-lg border border-gray-200 rounded-2xl"
+          >
+            <div class="bg-agri-dark px-6 py-4">
+              <h3 class="font-bold text-white text-xl">
+                Tabel 1. Hasil Evaluasi per Kelas Model Bi-LSTM
+              </h3>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="min-w-full divide-y divide-gray-200 text-center">
+                <thead class="bg-agri-light">
+                  <tr>
+                    <th
+                      scope="col"
+                      class="px-6 py-4 text-xs font-bold text-agri-dark uppercase tracking-wider"
+                    >
+                      Kelas Fase
+                    </th>
+                    <th
+                      scope="col"
+                      class="px-6 py-4 text-xs font-bold text-agri-dark uppercase tracking-wider"
+                    >
+                      <em>Precision</em>
+                    </th>
+                    <th
+                      scope="col"
+                      class="px-6 py-4 text-xs font-bold text-agri-dark uppercase tracking-wider"
+                    >
+                      <em>Recall</em>
+                    </th>
+                    <th
+                      scope="col"
+                      class="px-6 py-4 text-xs font-bold text-agri-dark uppercase tracking-wider"
+                    >
+                      <em>F1-Score</em>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-100">
+                  <tr class="hover:bg-gray-50 transition-colors">
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                    >
+                      Vegetatif Awal
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
+                    >
+                      87,50
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
+                    >
+                      82,03
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
+                    >
+                      84,68
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-gray-50 transition-colors">
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                    >
+                      Vegetatif Akhir
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
+                    >
+                      79,27
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
+                    >
+                      83,80
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
+                    >
+                      81,52
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-gray-50 transition-colors">
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                    >
+                      Generatif
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
+                    >
+                      90,55
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
+                    >
+                      86,46
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
+                    >
+                      88,45
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-gray-50 transition-colors">
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                    >
+                      Panen
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
+                    >
+                      85,59
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
+                    >
+                      87,07
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
+                    >
+                      86,32
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-gray-50 transition-colors">
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                    >
+                      Persiapan Lahan
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
+                    >
+                      82,91
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
+                    >
+                      83,21
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
+                    >
+                      83,06
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-gray-50 transition-colors">
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                    >
+                      Bera
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
+                    >
+                      74,85
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
+                    >
+                      81,53
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
+                    >
+                      78,05
+                    </td>
+                  </tr>
+                  <tr
+                    class="bg-green-50 font-bold hover:bg-green-100 transition-colors"
+                  >
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-agri-dark"
+                    >
+                      <em>Accuracy</em>
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-agri-dark"
+                    ></td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-agri-dark"
+                    ></td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-agri-dark"
+                    >
+                      84,20
+                    </td>
+                  </tr>
+                  <tr
+                    class="bg-green-50 font-bold hover:bg-green-100 transition-colors"
+                  >
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-agri-dark"
+                    >
+                      <em>Macro Average</em>
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-agri-dark"
+                    >
+                      83,46
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-agri-dark"
+                    >
+                      84,02
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-agri-dark"
+                    >
+                      83,68
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Tabel 2 & 3 Flex Container -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            <div
+              class="overflow-hidden shadow-lg border border-gray-200 rounded-2xl h-fit"
+            >
+              <div class="bg-agri-dark px-6 py-4">
+                <h3 class="font-bold text-white text-xl">
+                  Tabel 2. Perbandingan Model
+                </h3>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                  <thead class="bg-agri-light">
+                    <tr>
+                      <th
+                        scope="col"
+                        class="px-4 py-4 text-left text-xs font-bold text-agri-dark uppercase tracking-wider"
+                      >
+                        Model
+                      </th>
+                      <th
+                        scope="col"
+                        class="px-4 py-4 text-center text-xs font-bold text-agri-dark uppercase tracking-wider"
+                      >
+                        <em>Accuracy</em>
+                      </th>
+                      <th
+                        scope="col"
+                        class="px-4 py-4 text-center text-xs font-bold text-agri-dark uppercase tracking-wider"
+                      >
+                        <em>Precision</em>
+                      </th>
+                      <th
+                        scope="col"
+                        class="px-4 py-4 text-center text-xs font-bold text-agri-dark uppercase tracking-wider"
+                      >
+                        <em>Recall</em>
+                      </th>
+                      <th
+                        scope="col"
+                        class="px-4 py-4 text-center text-xs font-bold text-agri-dark uppercase tracking-wider"
+                      >
+                        <em>F1-Score</em>
+                      </th>
+                      <th
+                        scope="col"
+                        class="px-4 py-4 text-center text-xs font-bold text-agri-dark uppercase tracking-wider"
+                      >
+                        Koefisien <em>Kappa</em>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="bg-white divide-y divide-gray-100">
+                    <tr
+                      class="bg-green-50 border-l-4 border-agri font-bold hover:bg-green-100 transition-colors"
+                    >
+                      <td
+                        class="px-4 py-4 text-sm text-agri-dark whitespace-normal"
+                      >
+                        Bi-LSTM yang dikembangkan peneliti
+                      </td>
+                      <td
+                        class="px-4 py-4 whitespace-nowrap text-sm text-agri-dark text-center"
+                      >
+                        84,20%
+                      </td>
+                      <td
+                        class="px-4 py-4 whitespace-nowrap text-sm text-agri-dark text-center"
+                      >
+                        83,46%
+                      </td>
+                      <td
+                        class="px-4 py-4 whitespace-nowrap text-sm text-agri-dark text-center"
+                      >
+                        83,02%
+                      </td>
+                      <td
+                        class="px-4 py-4 whitespace-nowrap text-sm text-agri-dark text-center"
+                      >
+                        83,68%
+                      </td>
+                      <td
+                        class="px-4 py-4 whitespace-nowrap text-sm text-agri-dark text-center"
+                      >
+                        0,8090
+                      </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                      <td
+                        class="px-4 py-4 text-sm font-medium text-gray-900 whitespace-normal"
+                      >
+                        LSTM Thorp dan Drajat (Hyperparameter Penelitian Ini)
+                      </td>
+                      <td
+                        class="px-4 py-4 whitespace-nowrap text-sm text-gray-600 text-center"
+                      >
+                        80,66%
+                      </td>
+                      <td
+                        class="px-4 py-4 whitespace-nowrap text-sm text-gray-600 text-center"
+                      >
+                        80,16%
+                      </td>
+                      <td
+                        class="px-4 py-4 whitespace-nowrap text-sm text-gray-600 text-center"
+                      >
+                        80,28%
+                      </td>
+                      <td
+                        class="px-4 py-4 whitespace-nowrap text-sm text-gray-600 text-center"
+                      >
+                        80,16%
+                      </td>
+                      <td
+                        class="px-4 py-4 whitespace-nowrap text-sm text-gray-600 text-center"
+                      >
+                        0,7661
+                      </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                      <td
+                        class="px-4 py-4 text-sm font-medium text-gray-900 whitespace-normal"
+                      >
+                        LSTM Thorp dan Drajat (Hyperparameter Peneliti Asli)
+                      </td>
+                      <td
+                        class="px-4 py-4 whitespace-nowrap text-sm text-gray-600 text-center"
+                      >
+                        77,27%
+                      </td>
+                      <td
+                        class="px-4 py-4 whitespace-nowrap text-sm text-gray-600 text-center"
+                      >
+                        77,16%
+                      </td>
+                      <td
+                        class="px-4 py-4 whitespace-nowrap text-sm text-gray-600 text-center"
+                      >
+                        76,74%
+                      </td>
+                      <td
+                        class="px-4 py-4 whitespace-nowrap text-sm text-gray-600 text-center"
+                      >
+                        76,62%
+                      </td>
+                      <td
+                        class="px-4 py-4 whitespace-nowrap text-sm text-gray-600 text-center"
+                      >
+                        0,7249
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Tabel 3. Evaluasi Skenario Fitur -->
+            <div
+              class="overflow-hidden shadow-lg border border-gray-200 rounded-2xl h-fit"
+            >
+              <div class="bg-agri-dark px-6 py-4">
+                <h3 class="font-bold text-white text-xl">
+                  Tabel 3. Evaluasi Skenario Fitur
+                </h3>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                  <thead class="bg-agri-light">
+                    <tr>
+                      <th scope="col" class="px-4 py-4 text-left text-xs font-bold text-agri-dark uppercase tracking-wider">
+                        Skenario
+                      </th>
+                      <th scope="col" class="px-4 py-4 text-center text-xs font-bold text-agri-dark uppercase tracking-wider">
+                        Jumlah Fitur
+                      </th>
+                      <th scope="col" class="px-4 py-4 text-center text-xs font-bold text-agri-dark uppercase tracking-wider">
+                        <em>Accuracy</em>
+                      </th>
+                      <th scope="col" class="px-4 py-4 text-center text-xs font-bold text-agri-dark uppercase tracking-wider">
+                        <em>Precision</em>
+                      </th>
+                      <th scope="col" class="px-4 py-4 text-center text-xs font-bold text-agri-dark uppercase tracking-wider">
+                        <em>Recall</em>
+                      </th>
+                      <th scope="col" class="px-4 py-4 text-center text-xs font-bold text-agri-dark uppercase tracking-wider">
+                        F1-<em>score</em>
+                      </th>
+                      <th scope="col" class="px-4 py-4 text-center text-xs font-bold text-agri-dark uppercase tracking-wider">
+                        Koefisien <em>Kappa</em>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="bg-white divide-y divide-gray-100">
+                    <!-- S1 Band -->
+                    <tr class="hover:bg-gray-50 transition-colors">
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900"><em>S1 Band</em></td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">2</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">69,05</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">68,49</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">68,14</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">68,09</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">0,6264</td>
+                    </tr>
+                    <!-- S1 Indeks -->
+                    <tr class="hover:bg-gray-50 transition-colors">
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900"><em>S1 Indeks</em></td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">3</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">67,75</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">67,03</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">66,71</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">66,70</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">0,6102</td>
+                    </tr>
+                    <!-- S1 Band Indeks -->
+                    <tr class="hover:bg-gray-50 transition-colors">
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900"><em>S1 Band Indeks</em></td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">5</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">70,92</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">69,99</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">69,73</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">69,78</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">0,6482</td>
+                    </tr>
+                    <!-- S2 Band -->
+                    <tr class="hover:bg-gray-50 transition-colors">
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900"><em>S2 Band</em></td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">5</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">84,20</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">83,79</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">83,31</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">83,50</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">0,8085</td>
+                    </tr>
+                    <!-- S2 Indeks -->
+                    <tr class="hover:bg-gray-50 transition-colors">
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900"><em>S2 Indeks</em></td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">2</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">83,84</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">83,33</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">83,29</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">83,23</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">0,8044</td>
+                    </tr>
+                    <!-- S2 Band Indeks (Skenario Terbaik - Highlighted) -->
+                    <tr class="bg-green-50 font-semibold border-y border-green-200 hover:bg-green-100 transition-colors">
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark font-bold"><em>S2 Band Indeks</em></td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold">7</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold">84,78</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold">84,11</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold">84,32</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold">84,19</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold">0,8158</td>
+                    </tr>
+                    <!-- S1 S2 Band -->
+                    <tr class="hover:bg-gray-50 transition-colors">
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900"><em>S1 S2 Band</em></td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">7</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">83,62</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">82,80</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">83,27</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">82,98</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">0,8021</td>
+                    </tr>
+                    <!-- S1 S2 Indeks -->
+                    <tr class="hover:bg-gray-50 transition-colors">
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900"><em>S1 S2 Indeks</em></td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">5</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">82,68</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">82,30</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">81,56</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">81,78</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-center">0,7901</td>
+                    </tr>
+                    <!-- S1 S2 Band Indeks -->
+                    <tr class="bg-green-50 font-semibold border-y border-green-200 hover:bg-green-100 transition-colors">
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark font-bold"><em>S1 S2 Band Indeks</em></td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold">12</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold">84,20</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold">83,46</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold">84,02</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold">83,68</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-agri-dark text-center font-bold">0,8090</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
